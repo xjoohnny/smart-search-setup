@@ -1,0 +1,61 @@
+---
+# tasks file for setupServer
+
+  - name: Python3.7 | Installing Python 3.7 dependencies...
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - software-properties-common
+
+
+  - name: Python3.7 | Installing Python3.7 PPA repo...
+    apt_repository:
+      repo: ppa:deadsnakes/ppa
+
+
+  - name: Python3.7 | Installing Python 3.7 packages...
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - python3.7
+        
+###########################################################
+
+  - name: pip | Installing pip packages...
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - python3-pip
+
+###########################################################
+
+  - name: Nodejs | Installing Nodejs Repo...
+    shell: "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -"
+
+
+  - name: Nodejs | Installing Nodejs packages...
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - nodejs
+
+###########################################################
+
+  - name: Yarn | Installing Yarn GPG Key...
+    shell: "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -"
+
+
+  - name: Yarn | Installing Yarn GPG Key...
+    shell: 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list ; apt-get update -y'
+
+
+  - name: Yarn | Installing Yarn packages...
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - yarn

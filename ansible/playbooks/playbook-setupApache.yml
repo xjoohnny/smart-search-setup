@@ -1,0 +1,5 @@
+  - name: Smart Search | Setup Apache Playbook
+    hosts: local
+    become: yes
+    roles:
+      - setupApache

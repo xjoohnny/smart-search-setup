@@ -1,0 +1,55 @@
+---
+# tasks file for setupApache
+
+  - name: Apache2 | Installing Apache2 packages...
+    apt:
+      name: "{{ item }}"
+      update_cache: yes
+      state: latest
+      state: present
+    loop:
+      - apache2
+        
+###########################################################
+
+  - name: Apache2 | Copying vhost...
+    copy:
+      src: /opt/smart-search-setup/apache/smartsearch.conf
+      dest: /etc/apache2/sites-available/
+      mode: preserve
+      state: present
+
+###########################################################
+
+  - name: Apache2 | Enabling modules...
+    apache2_module:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - proxy
+      - proxy_http
+      - proxy_connect
+
+###########################################################
+
+
+  - name: Apache2 | Enabling site...
+    shell: "a2ensite smartsearch.conf ; a2dissite 000-default.conf"
+
+
+  - name: Apache2 | Restarting service...
+    shell: "service apache2 restart"
+
+###########################################################
+
+
+  - name: Apache2 | Adding host entry...
+    lineinfile:
+      path: "{{ item.path }}"
+      line: "{{ item.line }}"
+      insertafter: last
+      state: present
+    loop:
+      - {path: '/etc/hosts', line: ' '}
+      - {path: '/etc/hosts', line: '# INTERNAL RESOLV'}
+      - {path: '/etc/hosts', line: '192.168.30.2 demo.smartsearch.example'}

@@ -47,6 +47,8 @@ Vagrant.configure("2") do |config|
         srv.vm.provision "shell", inline: "echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config ; service ssh restart"
         srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-setupServer.yml"
         srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-setupApache.yml"
+        srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-setupAPI.yml"
+        srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-startAPI.yml"
       end
 
 

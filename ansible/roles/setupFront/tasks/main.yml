@@ -1,0 +1,22 @@
+---
+# tasks file for setupFront
+
+
+  - name: Front | Cloning repository...
+    git:
+       repo: 'https://github.com/HenriqueLira1/SmartSearch.git'
+       dest: /opt/smartsearch-app-front
+       clone: yes
+
+
+  - name: Front | Building dependencies...
+    npm:
+      name: forever
+      state: present
+      path: /opt/smartsearch-app-front
+
+
+  - name: Front | Yarn install...
+    yarn:
+      path: /opt/smartsearch-app-front
+      state: latest

@@ -1,0 +1,5 @@
+  - name: Smart Search | Setup API Playbook
+    hosts: local
+    become: yes
+    roles:
+      - setupAPI

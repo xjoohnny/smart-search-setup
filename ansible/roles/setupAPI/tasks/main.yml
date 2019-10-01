@@ -1,0 +1,14 @@
+---
+# tasks file for setupAPI
+
+
+  - name: API | Cloning repository...
+    git:
+       repo: 'https://github.com/rlebrao/smart-search-crawlers'
+       dest: /opt/smartsearch-app-api
+       clone: yes
+
+
+  - name: API | Building dependencies...
+    pip:
+      requirements: /opt/smartsearch-app-api/requirements.txt

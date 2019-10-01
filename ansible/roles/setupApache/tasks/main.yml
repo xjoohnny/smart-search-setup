@@ -17,7 +17,6 @@
       src: /opt/smart-search-setup/apache/smartsearch.conf
       dest: /etc/apache2/sites-available/
       mode: preserve
-      state: present
 
 ###########################################################
 

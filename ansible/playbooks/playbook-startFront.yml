@@ -1,0 +1,5 @@
+  - name: Smart Search | Start Front Playbook
+    hosts: local
+    become: yes
+    roles:
+      - startFront

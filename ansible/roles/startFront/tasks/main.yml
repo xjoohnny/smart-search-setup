@@ -1,0 +1,6 @@
+---
+# tasks file for startFront
+#
+#
+  - name: Start | Front
+    shell: 'cd /opt/smartsearch-app-front ; forever start server.js'

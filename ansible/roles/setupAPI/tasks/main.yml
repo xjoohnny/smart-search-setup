@@ -7,7 +7,7 @@
        repo: 'https://github.com/rlebrao/smart-search-crawlers'
        dest: /opt/smartsearch-app-api
        clone: yes
-
+       force: yes
 
   - name: API | Building dependencies...
     pip:

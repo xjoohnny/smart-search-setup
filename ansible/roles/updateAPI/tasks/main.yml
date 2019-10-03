@@ -1,0 +1,28 @@
+---
+# tasks file for updateAPI
+
+
+  - name: Update API | Creating backup folder...
+    file:
+      path: /opt/smartsearch-app-backups/
+      state: directory
+      mode: '0755'
+
+
+  - name: Update API | Copying to backup folder...
+    synchronize:
+      src: /opt/smartsearch-app-api
+      dest: /opt/smartsearch-app-backups/api-{{ansible_date_time.date}}
+
+  - name: Update API | Removindo current version...
+    file:
+      path: /opt/smartsearch-app-api
+      state: absent
+
+
+  - name: Update API | Cloning repository...
+    git:
+       repo: 'https://github.com/rlebrao/smart-search-crawlers'
+       dest: /opt/smartsearch-app-api
+       clone: yes
+       force: yes

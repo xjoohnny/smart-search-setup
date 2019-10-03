@@ -1,0 +1,30 @@
+---
+# tasks file for updateFront
+
+
+  - name: Update Front | Creating backup folder...
+    file:
+      path: /opt/smartsearch-app-backups/
+      state: directory
+      mode: '0755'
+
+
+  - name: Update Front | Copying to backup folder...
+    synchronize:
+      src: /opt/smartsearch-app-front
+      dest: /opt/smartsearch-app-backups/front-{{ansible_date_time.date}}
+
+
+  - name: Update API | Removindo current version...
+    file:
+      path: /opt/smartsearch-app-front
+      state: absent
+
+
+
+  - name: Update Front | Cloning repository...
+    git:
+       repo: 'https://github.com/HenriqueLira1/SmartSearch.git'
+       dest: /opt/smartsearch-app-front
+       clone: yes
+       force: yes

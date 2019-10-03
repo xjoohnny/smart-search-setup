@@ -1,0 +1,7 @@
+---
+# tasks file for stopAPI
+
+
+  - name: Stop | API
+    action: shell pkill -9 -f app.py
+    ignore_errors: true

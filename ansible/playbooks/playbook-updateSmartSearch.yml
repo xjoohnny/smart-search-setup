@@ -1,0 +1,12 @@
+  - name: Smart Search | Update API & Front-end Playbook
+    hosts: local
+    become: yes
+    roles:
+      - stopAPI
+      - stopFront
+      - updateAPI
+      - updateFront
+      - setupAPI
+      - setupFront
+      - startAPI
+      - startFront

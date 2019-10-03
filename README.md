@@ -1,8 +1,8 @@
 # smart-search-setup
 Configuration for Smart Search server.
 
-# Virtual Box e Vagrant
-Com o intuito de agilizar o desenvolvimento e releases da aplicação sem a necessidade de investir com clouds, fizemos a utilização do Vagrant e do Virtual Box.
+# Infraestrutura de desenvolvimento Ágil
+Com o intuito de agilizar o desenvolvimento e releases da aplicação sem a necessidade de investir com clouds para testes, fizemos a utilização do *Vagrant* e do *Virtual Box*, o que nos permitiu economizar recursos financeiros no início do projeto e ainda sim desenvolver em cima de uma Infraestrutura versionada e automatizada.
 
 Isto possibilita a criação de máquinas virtuais locais com todas as dependências da aplicação instaladas e prontas para serem executadas diretamente na subida do servidor local.
 
@@ -26,12 +26,12 @@ Cloning into 'smart-search-setup'...
 `$ vagrant up`
 
 Será criado uma máquina virtual com as seguintes especificações, conforme contido no arquivo 'vagrant/machines.yml'
-- name: application
-- cpus: 1
-- memory: 2048
-- hostname: application.smartsearch.example
-- ip: 192.168.30.2
-- system: ubuntu/bionic64
+- **name:** application
+- **cpus:** 1
+- **memory:** 2048
+- **hostname:** application.smartsearch.example
+- **ip:** 192.168.30.2
+- **system:** ubuntu/bionic64
 
 # Provisionamento automático de Recursos
 Durante a criação da Máquina Virtual, o script de provisionamento efetuará a instalação do *Ansible*. Esta é uma ferramenta que tem a finalidade de automatizar e facilitar a instalação e configuração de recursos dentro de Sistemas Operacionais Linux.

@@ -1,65 +1,36 @@
-# vagrant-4-labs
+# Instalação do Virtual Box (Linux Ubuntu 18.x)
+`$ wget https://download.virtualbox.org/virtualbox/6.0.12/virtualbox-6.0_6.0.12-133076~Ubuntu~bionic_amd64.deb`
 
-Vagrantfile para criação de laboratórios com Hashicorp Vagrant.
+`$ sudo dpkg -i virtualbox-6.0_6.0.12-133076~Ubuntu~bionic_amd6`
 
-Incluí personalizações para:
+# Instalação do Vagrant
+`$ wget https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb`
 
-* criar automaticamente chaves de SSH para o usuário root.
-* criar arquivo /etc/hosts para resolução de nomes entre VM's.
-* definição de máquinas virtuais baseada em arquivo YAML.
+`$ sudo dpkg -i vagrant_2.2.5_x86_64.deb`
 
-O objetivo deste projeto é usar as funcionalidades aplicadas ao arquivo Vagrantfile para montar laboratórios virtuais de forma simples e dinâmica.
+# Clonar repositório
+`$ git clone https://github.com/xjoohnny/smart-search-setup.git`
 
-## Para iniciar o laboratório
+Cloning into 'smart-search-setup'...
 
-Faça o download dos arquivos disponíveis neste projeto através do git:
+`$ cd smart-search-setup/vagrant`
 
-```
-git clone https://github.com/jonathandalves/vagrant-4-labs.git
-```
+`$ vagrant up`
 
-Acesse o diretório vagrant-4-labs e, através do arquivo machines.yml, personalize as características das máquinas virtuais que você deseja construír.
+Será criado uma máquina virtual com as seguintes especificações, conforme contido no arquivo 'vagrant/machines.yml'
+- **name:** application
+- **cpus:** 1
+- **memory:** 2048
+- **hostname:** application.smartsearch.example
+- **ip:** 192.168.30.2
+- **system:** ubuntu/bionic64
 
-```
-cd vagrant-4-labs
-vim machines.yml
-```
+# Acesso a Aplicação
+Após a Máquina Virtual concluir sua criação, a aplicação estará acessível através do Webserver Apache, no endereço: `http://192.168.30.2/`
 
-A seguir construa as máquinas virtuais usando o Vagrant:
+# Desligar máquina virtual
+`$ cd smart-search-setup/vagrant`
 
-```
-vagrant up
-```
+`$ vagrant halt`
 
-Repare que, no mesmo diretório, serão criados os seguintes arquivos.
-
-Chaves de SSH:
-
-* id_rsa
-* id_rsa.pub
-
-Base para /etc/hosts:
-
-* hosts
-* .hosts.tmp
-
-*O arquivo .hosts.tmp é um arquivo oculto para armazenamento da identificação das máquinas virtuais, no entanto, já que ele faz parte de um loop, deve conter uma série de valores repetidos - que são filtrados e armazenamos no arquivo hosts.
-
-
-## Para atuaizar o laboratório
-
-Se você tiver uma nova máquina virtual para o laboratório, resincronize o conteúdo do diretório /vagrant de dentro das VMs com o comando:
-
-```
-vagrant rsync
-```
-
-A seguir reprovisione as máquinas virtuais que já estão em execução para que elas sincronizem o arquivo /etc/hosts com a identificação da nova VM, usando:
-
-```
-vagrant up --provision
-```
-
-# Informações do Autor
-
-Criado por [Jonathan Dantas Alves](https://www.linkedin.com/in/jonathandantasalves/).
+`$ vagrant destroy -f`

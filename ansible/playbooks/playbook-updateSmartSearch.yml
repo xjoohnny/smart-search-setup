@@ -2,11 +2,6 @@
     hosts: local
     become: yes
     roles:
-      - stopAPI
-      - stopFront
       - updateAPI
       - updateFront
-      - setupAPI
-      - setupFront
-      - startAPI
-      - startFront
+      - rebuildApp

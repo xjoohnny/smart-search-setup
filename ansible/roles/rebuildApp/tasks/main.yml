@@ -1,0 +1,5 @@
+---
+# tasks file for rebuildApp
+
+  - name: SmartSearch | Rebuilding App...
+    shell: "docker-compose -f /opt/smart-search-setup/dockerfiles/docker-compose.yml up --build --force-recreate -d"

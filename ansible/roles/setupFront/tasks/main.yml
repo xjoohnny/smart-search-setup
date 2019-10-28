@@ -5,6 +5,6 @@
   - name: Front | Cloning repository...
     git:
        repo: 'https://github.com/HenriqueLira1/SmartSearch.git'
-       dest: /opt/smartsearch-app-front
+       dest: /opt/smartsearch-front
        clone: yes
        force: yes

@@ -6,7 +6,7 @@ Com o intuito de agilizar o desenvolvimento e releases da aplicação sem a nece
 
 Após o desenvolvimento estar devidamente finalizado e testado, utilizamos a ferramenta *Terraform* para o provisionamento automático de Clouds.
 
-Toda a arquitetura foi baseada em um conceito de Devops e IaaC (Infrastructure as a Code), que nos permitiu versionar nossa Infraestrutura de uma forma que, podemos apagar todos os nossos serviços e disponibiliza-los novamente em questão de minutos. Isto possibilitou a criação de máquinas virtuais locais ou Clouds em Providers diferentes com todas as dependências da aplicação instaladas e prontas para serem executadas diretamente na subida do servidor, agilizando o processo de 
+Toda a arquitetura foi baseada em um conceito de Devops e IaaC (Infrastructure as a Code), que nos permitiu versionar nossa Infraestrutura de uma forma que, podemos apagar todos os nossos serviços e disponibiliza-los novamente em questão de minutos. Isto possibilitou a criação de máquinas virtuais locais ou Clouds em Providers diferentes com todas as dependências da aplicação instaladas e prontas para serem executadas diretamente na subida do servidor.
 
 # SaaS vs On-Premise
 Visando também a necessidade do cliente para a utilização da aplicação, a utilização das ferramentas em questão nos possibilita a utilização tanto em um serviço de Cloud (SaaS = Software as a Service), quanto em máquinas virtuais dentro da Infraestrutura do Cliente (On-Premise).

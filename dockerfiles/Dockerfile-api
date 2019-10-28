@@ -1,8 +1,8 @@
-FROM ubuntu
-
+FROM python:3.6.9
+  
 RUN mkdir -p /opt/smartsearch-api
 
-RUN sudo apt-get install libtesseract-dev tesseract-ocr poppler-utils -y
+RUN apt-get update -y && apt-get install libtesseract-dev tesseract-ocr poppler-utils python-pip -y
 
 COPY . /opt/smartsearch-api
 

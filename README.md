@@ -1,49 +1,19 @@
 # smart-search-setup
-Configuration for Smart Search server.
+Configuration for Smart Search Server.
 
 # Infraestrutura de desenvolvimento Ágil
-Com o intuito de agilizar o desenvolvimento e releases da aplicação sem a necessidade de investir com clouds para testes, fizemos a utilização do *Vagrant* e do *Virtual Box*, o que nos permitiu economizar recursos financeiros no início do projeto e ainda sim desenvolver em cima de uma Infraestrutura versionada e automatizada.
+Com o intuito de agilizar o desenvolvimento e releases da aplicação sem a necessidade de investir inicialmente com clouds para testes, fizemos a utilização do *Vagrant* e do *Virtual Box*, o que nos permitiu poupar recursos financeiros no início do projeto e ainda sim desenvolver em cima de uma Infraestrutura única, livre de dependências e configurações manuais.
 
-Isto possibilita a criação de máquinas virtuais locais com todas as dependências da aplicação instaladas e prontas para serem executadas diretamente na subida do servidor local.
+Após o desenvolvimento estar devidamente finalizado e testado, utilizamos a ferramenta *Terraform* para o provisionamento automático de Clouds.
 
-# Instalação do Virtual Box (Linux Ubuntu 18.x)
-`$ wget https://download.virtualbox.org/virtualbox/6.0.12/virtualbox-6.0_6.0.12-133076~Ubuntu~bionic_amd64.deb`
+Toda a arquitetura foi baseada em um conceito de Devops e IaaC (Infrastructure as a Code), que nos permitiu versionar nossa Infraestrutura de uma forma que, podemos apagar todos os nossos serviços e disponibiliza-los novamente em questão de minutos. Isto possibilitou a criação de máquinas virtuais locais ou Clouds em Providers diferentes com todas as dependências da aplicação instaladas e prontas para serem executadas diretamente na subida do servidor, agilizando o processo de 
 
-`$ sudo dpkg -i virtualbox-6.0_6.0.12-133076~Ubuntu~bionic_amd6`
-
-# Instalação do Vagrant
-`$ wget https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb`
-
-`$ sudo dpkg -i vagrant_2.2.5_x86_64.deb`
-
-# Clonar repositório
-`$ git clone https://github.com/xjoohnny/smart-search-setup.git`
-
-Cloning into 'smart-search-setup'...
-
-`$ cd smart-search-setup/vagrant`
-
-`$ vagrant up`
-
-Será criado uma máquina virtual com as seguintes especificações, conforme contido no arquivo 'vagrant/machines.yml'
-- **name:** application
-- **cpus:** 1
-- **memory:** 2048
-- **hostname:** application.smartsearch.example
-- **ip:** 192.168.30.2
-- **system:** ubuntu/bionic64
+# SaaS vs On-Premise
+Visando também a necessidade do cliente para a utilização da aplicação, a utilização das ferramentas em questão nos possibilita a utilização tanto em um serviço de Cloud (SaaS = Software as a Service), quanto em máquinas virtuais dentro da Infraestrutura do Cliente (On-Premise).
 
 # Provisionamento automático de Recursos
 Durante a criação da Máquina Virtual, o script de provisionamento efetuará a instalação do *Ansible*. Esta é uma ferramenta que tem a finalidade de automatizar e facilitar a instalação e configuração de recursos dentro de Sistemas Operacionais Linux.
 
-Com ele, é possível executar Playbooks que garantirão a instalação das ferramentas necessárias para subir a *Aplicação Web*, o *Backend API* e o *Webserver Apache2*.
+Com ele, é possível executar Playbooks que garantirão a instalação das ferramentas necessárias para subir a *Aplicação Web*, o *Backend API* e o *Webserver Apache2* independente do tipo de Provider (Cloud, Máquina Virtual Privada ou até mesmo um servidor físico).
 
-# Acesso a Aplicação
-Após a Máquina Virtual concluir sua criação, a aplicação estará acessível através do Webserver Apache, no endereço: `http://192.168.30.2/`
 
-# Desligar máquina virtual
-`$ cd smart-search-setup/vagrant`
-
-`$ vagrant halt`
-
-`$ vagrant destroy -f`

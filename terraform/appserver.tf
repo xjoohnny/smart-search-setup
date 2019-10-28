@@ -28,9 +28,15 @@
       "sudo apt-add-repository ppa:ansible/ansible -y", 
       "sudo apt update -y",
       "sudo apt install python git curl wget ansible -y",
-      "cd /opt/ ; sudo git clone https://github.com/xjoohnny/smart-search-setup.git smartsearch-setup",
+      "sudo chmod 400 /root/.ssh/id_rsa",
+      "cd /opt/ ; sudo git clone -b dev https://github.com/xjoohnny/smart-search-setup.git smartsearch-setup",
       "sudo rm -rf /etc/ansible/* && sudo mv /opt/smartsearch-setup/ansible/* /etc/ansible/",
       "sudo echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config && sudo service ssh restart",
+      "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupServer.yml",
+      "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupApache.yml",
+      "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupAPI.yml",
+      "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupFront.yml",
+      "sudo docker-compose -f /opt/smart-search-setup/dockerfiles/docker-compose.yml up -d"
     ]
   }
 }

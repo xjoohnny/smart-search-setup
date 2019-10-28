@@ -1,6 +1,0 @@
----
-# tasks file for startAPI
-#
-#
-  - name: Start | API
-    shell: 'nohup python3 /opt/smartsearch-app-api/app.py &'

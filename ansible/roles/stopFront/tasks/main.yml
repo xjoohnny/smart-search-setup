@@ -1,7 +1,0 @@
----
-# tasks file for stopFront
-
-
-  - name: Stop | Front
-    shell: 'pkill -9 -f /usr/bin/node'
-    ignore_errors: true

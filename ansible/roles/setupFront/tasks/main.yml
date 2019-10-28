@@ -8,16 +8,3 @@
        dest: /opt/smartsearch-app-front
        clone: yes
        force: yes
-
-  - name: Front | Building dependencies...
-    npm:
-      name: forever
-      state: present
-      path: /opt/smartsearch-app-front
-      global: yes
-
-
-  - name: Front | Yarn install...
-    yarn:
-      path: /opt/smartsearch-app-front
-      state: latest

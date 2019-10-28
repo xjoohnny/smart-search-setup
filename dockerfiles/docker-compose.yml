@@ -1,0 +1,12 @@
+version: '3'
+services:
+  front:
+    build: /opt/smartsearch-front
+    container_name: smartsearch-front
+    ports:
+      - "3000:3000"
+  api:
+    build: /opt/smartsearch-api
+    container_name: smartsearch-api
+    ports:
+      - "5000:5000"

@@ -38,17 +38,3 @@
 
   - name: Apache2 | Restarting service...
     shell: "service apache2 restart"
-
-###########################################################
-
-
-  - name: Apache2 | Adding host entry...
-    lineinfile:
-      path: "{{ item.path }}"
-      line: "{{ item.line }}"
-      insertafter: last
-      state: present
-    loop:
-      - {path: '/etc/hosts', line: ' '}
-      - {path: '/etc/hosts', line: '# INTERNAL RESOLV'}
-      - {path: '/etc/hosts', line: '192.168.30.2 demo.smartsearch.example'}

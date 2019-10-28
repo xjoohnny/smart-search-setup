@@ -1,62 +1,30 @@
----
-# tasks file for setupServer
-
-  - name: Python3.7 | Installing Python 3.7 dependencies...
+  - name: Docker | Updating dependencies...
     apt:
       name: "{{ item }}"
       state: present
+      update_cache: yes
     loop:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
       - software-properties-common
 
+  - name: Docker | Adding Docker GPG Key...
+    shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
 
-  - name: Python3.7 | Installing Python3.7 PPA repo...
+  - name: Docker | Adding Docker Repository...
     apt_repository:
-      repo: ppa:deadsnakes/ppa
+      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+      state: present
 
-
-  - name: Python3.7 | Installing Python 3.7 packages...
+  - name: Docker | Installing Docker Packages...
+    - name: Docker | Updating dependencies...
     apt:
       name: "{{ item }}"
       state: present
+      update_cache: yes
     loop:
-      - python3.7
-        
-###########################################################
-
-  - name: pip | Installing pip packages...
-    apt:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - python3-pip
-      - python-pip
-
-###########################################################
-
-  - name: Nodejs | Installing Nodejs Repo...
-    shell: "curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -"
-
-
-  - name: Nodejs | Installing Nodejs packages...
-    apt:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - nodejs
-
-###########################################################
-
-  - name: Yarn | Installing Yarn GPG Key...
-    shell: "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -"
-
-
-  - name: Yarn | Installing Yarn GPG Key...
-    shell: 'echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list ; apt-get update -y'
-
-
-  - name: Yarn | Installing Yarn packages...
-    apt:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - yarn
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io

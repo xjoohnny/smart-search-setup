@@ -1,6 +1,0 @@
-  - name: Smart Search | Stop API & Front-end Playbook
-    hosts: local
-    become: yes
-    roles:
-      - stopAPI
-      - stopFront

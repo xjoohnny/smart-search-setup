@@ -14,7 +14,7 @@
 
   - name: Apache2 | Copying vhost...
     copy:
-      src: /opt/smart-search-setup/apache/smartsearch.conf
+      src: /opt/smartsearch-setup/apache/smartsearch.conf
       dest: /etc/apache2/sites-available/
       mode: preserve
 

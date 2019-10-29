@@ -29,7 +29,7 @@
       "sudo apt update -y",
       "sudo apt install python git curl wget ansible -y",
       "sudo chmod 400 /root/.ssh/id_rsa",
-      "cd /opt/ ; sudo git clone -b dev https://github.com/xjoohnny/smart-search-setup.git",
+      "cd /opt/ ; sudo git clone -b dev https://github.com/xjoohnny/smart-search-setup.git smartsearch-setup",
       "sudo rm -rf /etc/ansible/* && sudo mv /opt/smartsearch-setup/ansible/* /etc/ansible/",
       "sudo echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config && sudo service ssh restart",
       "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupServer.yml",

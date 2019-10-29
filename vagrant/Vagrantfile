@@ -42,8 +42,8 @@ Vagrant.configure("2") do |config|
 
       
       if server["name"] == "application"
-        srv.vm.provision "shell", inline: "cd /opt/ ; sudo git clone -b dev https://github.com/xjoohnny/smart-search-setup.git"
-        srv.vm.provision "shell", inline: "sudo rm -rf /etc/ansible/* ; sudo mv /opt/smart-search-setup/ansible/* /etc/ansible/"
+        srv.vm.provision "shell", inline: "cd /opt/ ; sudo git clone -b dev https://github.com/xjoohnny/smartsearch-setup.git smartsearch-setup"
+        srv.vm.provision "shell", inline: "sudo rm -rf /etc/ansible/* ; sudo mv /opt/smartsearch-setup/ansible/* /etc/ansible/"
         srv.vm.provision "shell", inline: "echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config ; service ssh restart"
         srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-setupServer.yml"
         srv.vm.provision "shell", inline: "ansible-playbook /etc/ansible/playbooks/playbook-setupApache.yml"
@@ -53,9 +53,8 @@ Vagrant.configure("2") do |config|
 
       
       if server["name"] == "application"
-        srv.vm.provision "shell", inline: "cp -rv /opt/smart-search-setup/dockerfiles/Dockerfile-api /opt/smartsearch-api/Dockerfile"
-        srv.vm.provision "shell", inline: "cp -rv /opt/smart-search-setup/dockerfiles/Dockerfile-front /opt/smartsearch-front/Dockerfile"
-        srv.vm.provision "shell", inline: "docker-compose -f /opt/smart-search-setup/dockerfiles/docker-compose.yml up -d"
+        srv.vm.provision "shell", inline: "cp -rv /opt/smartsearch-setup/dockerfiles/Dockerfile-api /opt/smartsearch-api/Dockerfile"
+        srv.vm.provision "shell", inline: "docker-compose -f /opt/smartsearch-setup/dockerfiles/docker-compose.yml up -d"
       end
 
 

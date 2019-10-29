@@ -36,7 +36,7 @@
       "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupApache.yml",
       "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupAPI.yml",
       "sudo ansible-playbook /etc/ansible/playbooks/playbook-setupFront.yml",
-      "sudo docker-compose -f /opt/smart-search-setup/dockerfiles/docker-compose.yml up -d"
+      "sudo docker-compose -f /opt/smartsearch-setup/dockerfiles/docker-compose.yml up -d"
     ]
   }
 }
